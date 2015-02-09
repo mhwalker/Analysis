@@ -474,12 +474,22 @@ void setupVariables(BaseHandler* handler)
   handler->addEventVariable("refitVertexChi2NDoFGOODSIGNALJETS", new EventVariableObjectVariableVector<double>("refitVertexChi2NDoF","goodSignalJets"));
   handler->addEventVariable("refitVertexDistanceToBeamGOODSIGNALJETS", new EventVariableObjectVariableVector<double>("refitVertexDistanceToBeam","goodSignalJets"));
   handler->addEventVariable("refitVertexTransverseSigGOODSIGNALJETS", new EventVariableObjectVariableVector<double>("refitVertexTransverseSig","goodSignalJets"));
+  handler->addEventVariable("refitVertexDeltaEta", new EventVariableObjectVariableVector<double>("refitVertexDeltaEta","goodSignalJets"));
+  handler->addEventVariable("refitVertexDeltaPhi", new EventVariableObjectVariableVector<double>("refitVertexDeltaPhi","goodSignalJets"));
+  handler->addEventVariable("avfVertexTotalChiSquaredGOODSIGNALJETS", new EventVariableObjectVariableVector<double>("avfVertexTotalChiSquared","goodSignalJets"));
+  handler->addEventVariable("avfVertexDegreesOfFreedomGOODSIGNALJETS", new EventVariableObjectVariableVector<double>("avfVertexDegreesOfFreedom","goodSignalJets"));
+  handler->addEventVariable("avfVertexChi2NDoFGOODSIGNALJETS", new EventVariableObjectVariableVector<double>("avfVertexChi2NDoF","goodSignalJets"));
+  handler->addEventVariable("avfVertexDistanceToBeamGOODSIGNALJETS", new EventVariableObjectVariableVector<double>("avfVertexDistanceToBeam","goodSignalJets"));
+  handler->addEventVariable("avfVertexTransverseSigGOODSIGNALJETS", new EventVariableObjectVariableVector<double>("avfVertexTransverseSig","goodSignalJets"));
+  handler->addEventVariable("avfVertexDeltaEta", new EventVariableObjectVariableVector<double>("avfVertexDeltaEta","goodSignalJets"));
+  handler->addEventVariable("avfVertexDeltaPhi", new EventVariableObjectVariableVector<double>("avfVertexDeltaPhi","goodSignalJets"));
   handler->addEventVariable("sumIPGOODSIGNALJETS", new EventVariableObjectVariableVector<double>("sumIP","goodSignalJets"));
   handler->addEventVariable("sumIPpTWeightGOODSIGNALJETS", new EventVariableObjectVariableVector<double>("sumIPpTWeight","goodSignalJets"));
   handler->addEventVariable("sumIPpTNormGOODSIGNALJETS", new EventVariableObjectVariableVector<double>("sumIPpTNorm","goodSignalJets"));
   handler->addEventVariable("sumIPSigGOODSIGNALJETS", new EventVariableObjectVariableVector<double>("sumIPSig","goodSignalJets"));
   handler->addEventVariable("sumIPLogSigGOODSIGNALJETS", new EventVariableObjectVariableVector<double>("sumIPLogSig","goodSignalJets"));
   handler->addEventVariable("nMatchedTracksGOODSIGNALJETS", new EventVariableObjectVariableVector<int>("nMatchedTracks","goodSignalJets"));
+
 
   handler->addEventVariable("MET",new EventVariableObjectVariableExtreme<double>("PT","ALLMET"));
 }
