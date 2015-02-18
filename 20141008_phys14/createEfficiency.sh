@@ -19,16 +19,23 @@ CMSDIR=$CMSSW_BASE/src
 #basedir="../../NTUPLES/2014/WZTo3LNu_CT10_13TeV-powheg-pythia8-tauola__MINIAODSIM__PU20bx25_POSTLS170_V5-v1/"
 #basedir="../../NTUPLES/2014/ZZTo4L_Tune4C_13TeV-powheg-pythia8__MINIAODSIM__PU20bx25_POSTLS170_V5-v1/"
 #basedir="../../NTUPLES/2014/coNLSP_1400_1700/"
-#basedir="../../NTUPLES/2014/T1tttt_1500_100/"
+basedir="../../NTUPLES/2014/T1tttt_1500_100/"
 #basedir="../../NTUPLES/2014/TChiwz_300_100/"
-basedir="../../NTUPLES/2014/TChiwz_200_100/"
-
+#basedir="../../NTUPLES/2014/TChiwz_200_100/"
+#basedir="../../NTUPLES/2014/SMS-T1tttt_2J_mGl-1500_mLSP-100_Tune4C_13TeV-madgraph-tauola__MINIAODSIM__PU20bx25_POSTLS170_V5-v1/"
+#basedir="../../NTUPLES/2014/WZJetsTo3LNu_Tune4C_13TeV-madgraph-tauola/Phys14DR-PU20bx25_PHYS14_25_V1-v1_MINIAODSIM/150217_143156/0000/"
+#basedir="../../NTUPLES/2014/ZZTo4L_Tune4C_13TeV-powheg-pythia8/Phys14DR-PU20bx25_PHYS14_25_V1-v1_MINIAODSIM/150217_143219/0000/"
+#basedir="../../NTUPLES/2014/TTJets_MSDecaysCKM_central_Tune4C_13TeV-madgraph-tauola/Phys14DR-PU20bx25_PHYS14_25_V1-v1_MINIAODSIM/150217_164426/0000/"
+#basedir="../../NTUPLES/2014/DYJetsToLL_M-50_13TeV-madgraph-pythia8/Phys14DR-PU20bx25_PHYS14_25_V1-v1_MINIAODSIM/150217_143447/0000/"
+#basedir="../../NTUPLES/2014/TTWJets_Tune4C_13TeV-madgraph-tauola/Phys14DR-PU20bx25_PHYS14_25_V1-v1_MINIAODSIM/150217_143327/0000/"
+#basedir="../../NTUPLES/2014/TTZJets_Tune4C_13TeV-madgraph-tauola/Phys14DR-PU20bx25_PHYS14_25_V1-v1_MINIAODSIM/150217_143307/0000/"
 #sample=DYJets_M50
 #sample=TTbar
 #sample=H2TauTau
 #sample=TTH2TauTau
 #sample=H2ZZ
-#sample=T1tttt_1500_100
+sample=T1tttt_1500_100
+#sample=TTW
 #sample=TTZ
 #sample=TTH2TauTau
 #sample=TTH2WW
@@ -39,7 +46,8 @@ basedir="../../NTUPLES/2014/TChiwz_200_100/"
 #sample=ZZ
 #sample=coNLSP_1400_1700
 #sample=TChiwz_300_100
-sample=TChiwz_200_100
+#sample=TChiwz_200_100
+#sample=SMS-T1ttt_1500_100
 
 condorFile=$SCRIPTDIR/submitEfficiency_${sample}.condor
 
@@ -90,9 +98,11 @@ while read line
 do
   #echo $line
   #base=`echo $line | awk '{split($9,array,"output_"); split(array[2],array2,".");print array2[1]}'`
-  base=`echo $line | awk '{split($9,array,"flat_"); split(array[2],array2,"_");split(array2[4],array3,".");print array3[1]}'`
+  #base=`echo $line | awk '{split($9,array,"flat_"); split(array[2],array2,"_");split(array2[4],array3,".");print array3[1]}'`
+  base=`echo $line | awk '{split($9,array,"results_"); split(array[2],array2,"."); print array2[1]}'`
+  ifname=$basedir/results_${base}.root
   #ifname=$basedir/output_${base}.root
-  ifname=$basedir/flat_${sample}_${base}.root
+  #ifname=$basedir/flat_${sample}_${base}.root
   mode=0
   ofile=histograms/histo_${sample}_${base}.root
   echo "output = $LOGDIR/\$(Cluster)_efficiency_${sample}_${base}.out" >> $condorFile

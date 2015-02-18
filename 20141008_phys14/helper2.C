@@ -135,6 +135,7 @@ void setupVariables2(BaseHandler* handler,bool isMC = false)
   
   handler->addEventVariable("NRECOVERTICES", new EventVariableN("NRECOVERTICES","ALLRECOVERTICES"));
 
+  handler->addEventVariable("NBOSONS",new EventVariableN("NBOSONS","BOSONS"));
   handler->addEventVariable("N_McMuonsFromZ", new EventVariableN("N_McMuonsFromZ","MCMUONSFROMZ"));
   handler->addEventVariable("N_McElectronsFromZ", new EventVariableN("N_McElectronsFromZ","MCELECTRONSFROMZ"));
 
@@ -188,7 +189,7 @@ void setupVariables2(BaseHandler* handler,bool isMC = false)
   mLowDY->addProduct("goodMuons");
   handler->addEventVariable("MLOWDY", mLowDY);
   
-  EventVariableMT* MT = new EventVariableMT("MT", mZ);
+  EventVariableMT* MT = new EventVariableMT("MT", mZ,"","goodElectrons","goodMuons","");
   handler->addEventVariable("MT",MT);
 
   EventVariablePairMass* mWdijet = new EventVariablePairMass("WDIJETMASS", "goodJets", "WJET", mW, 10);

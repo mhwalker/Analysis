@@ -1,4 +1,4 @@
-void syncMacro(const char* ifname="/cms/matt/mwalker/NTUPLES/2014/WZJetsTo3LNu_Tune4C_13TeV-madgraph-tauola/Phys14DR-PU20bx25_PHYS14_25_V1-v1_MINIAODSIM/150217_143156/0000/results_7.root"
+void exampleMacro(const char* ifname="./ttbar_0.root"
 		  , const char* ofname="exampleAnalyzer.root"
 		  , int mode = 0
 		  , int maxEvents = 0
@@ -21,15 +21,14 @@ void syncMacro(const char* ifname="/cms/matt/mwalker/NTUPLES/2014/WZJetsTo3LNu_T
 
   BaseHandler* handler = new BaseHandler(ofname,reader);
 
-  //AnalysisTreeWriter* writer = new AnalysisTreeWriter(handler,"treeR");
+  AnalysisTreeWriter* writer = new AnalysisTreeWriter(handler,"treeR");
 
-  //handler->setWriter(writer);
+  handler->setWriter(writer);
 
   //handler->readGoodRunLumiFromJSON(TString(json));
 
-  handler->setDebugMode(true);
-  setupPrintRA7Sync(handler);
-  handler->addPrintModule(new PrintModuleEverything("everything"));
+  //handler->setDebugMode(true);
+  //handler->addPrintModule(new PrintModuleEverything("everything"));
   //setupPrintElectrons(handler);
 
   setupProducts(handler);
@@ -45,9 +44,8 @@ void syncMacro(const char* ifname="/cms/matt/mwalker/NTUPLES/2014/WZJetsTo3LNu_T
   //handler->setMode("nEntryHigh",1);
 
   handler->initSignatures();
-  //handler->eventLoop();
-  handler->eventLoop(1,45939);
-  //handler->eventLoop(1,99880);
+  handler->eventLoop();
+  //handler->eventLoop(1,24248);
   handler->finishSignatures();
 
   cout<<"Done, exiting ...."<<endl;
